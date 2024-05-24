@@ -1,9 +1,14 @@
 import requests
 
-URL = 'https://httpbin.dev/get?name=mati&password=123&email=mati@codigofacilito.com'
-# query es todo la informacion que mandamos al servidor despues del signo ?
+URL = 'https://httpbin.dev/get'
 
-response = requests.get(URL) # GET
+params = {
+    'name': 'Matias Aless',
+    'password': '123',
+    'email': 'mati@codigofacilito.com'
+}
+
+response = requests.get(URL, params=params) # se manda la query atravez del diccionario params, para información sensible, como la usamos POST 
 
 if response.status_code == 200:
     payload = response.json()
@@ -13,3 +18,5 @@ if response.status_code == 200:
     print(params['password'])
     print(params['email'])
     
+    
+    print(response.url)
